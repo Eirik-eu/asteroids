@@ -31,10 +31,15 @@ def main():
 
         screen.fill("black")
         
-        for i in updatable:
-            i.update(dt)
-        for i in drawable:
-            i.draw(screen)
+        for obj in updatable:
+            obj.update(dt)
+        for obj in asteroids:
+            if obj.collision(player):
+                print("Game over!")
+                pygame.QUIT
+                return
+        for obj in drawable:
+            obj.draw(screen)
 
         pygame.display.flip()
         
